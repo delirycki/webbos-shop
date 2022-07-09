@@ -1,9 +1,7 @@
-import Page from '../components/Page';
-
 export default function IndexPage() {
   return (
     <div>
-      <Page>ELOs</Page>
+      <h2>ELOs</h2>
     </div>
   );
 }
