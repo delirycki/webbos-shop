@@ -1,5 +1,6 @@
 *front/node_modules
 *backend/node_modules
-*bacendf/.vscode
+*backend/.vscode
 *.env
 *.next
+*backend/.keystone
