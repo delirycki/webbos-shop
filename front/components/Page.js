@@ -5,13 +5,14 @@ import {
   ApolloProvider,
   gql,
 } from '@apollo/client';
-import PropTypes from 'prop-types';
+import { createUploadLink } from 'apollo-upload-client';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from './Header';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3000/api/graphql',
   cache: new InMemoryCache(),
+  link: createUploadLink({ uri: 'http://localhost:3000/api/graphql' }),
 });
 
 const GlobalStyle = createGlobalStyle`
