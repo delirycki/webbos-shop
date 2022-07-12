@@ -1,7 +1,18 @@
 import React from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
+} from '@apollo/client';
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from './Header';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3000/api/graphql',
+  cache: new InMemoryCache(),
+});
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -54,9 +65,11 @@ const InnerStyled = styled.div`
 function Page({ children }) {
   return (
     <div>
-      <GlobalStyle />
-      <Header />
-      <InnerStyled>{children}</InnerStyled>
+      <ApolloProvider client={client}>
+        <GlobalStyle />
+        <Header />
+        <InnerStyled>{children}</InnerStyled>
+      </ApolloProvider>
     </div>
   );
 }
